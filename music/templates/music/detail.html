@@ -1,0 +1,12 @@
+{% if error_message %}{{error_message}}{%endif%}
+<!-- <h3>You guys at {{album.id}}</h3> -->
+<form class="" action="{% url 'music:favourite' album.id%}" method="post">
+  {% csrf_token%}
+    {% for song in songs %}
+    <input type="radio" name="song" id = "song{{forloop.counter}}" value="{{song.id}}">
+    <label for="song{{forloop.counter}}" >{{song.song_name}} {{song.fav}}</label>
+    <br>
+    {%endfor%}
+    <br>
+    <input type="submit" value="favourites" />
+</form>
